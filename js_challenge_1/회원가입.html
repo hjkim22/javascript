@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" 
+    content="width=device-width, initial-scale=1.0">
+    <title>회원가입 폼 만들기</title>
+</head>
+<style>
+    body{
+    display: flex;
+    flex-direction: column;
+     justify-content: center;
+    align-items: center;
+    width: 400px;
+    padding: 40px 0 60px 0;
+    margin: auto;
+    background-color: #a1fff1;
+    border-radius: 10px;
+    box-shadow:
+    5px 5px 0px 5px black,
+    15px 15px 0px 5px gray,
+    25px 25px 0px 5px whitesmoke,
+    35px 35px 0px 5px red;
+}
+h1 {
+    text-align: center;
+}
+
+
+input {
+    border: 2px relative black;
+    border-radius: 15px;
+  }
+  
+ .input-box {
+    align-self: center;
+    height: 30px;
+    width:  300px;
+    margin: 10px 0;
+  }
+    
+  .phone-into {
+    display: flex;
+    justify-content: space-between;
+    width: 315px;
+    margin: 5px 0;
+  }
+  
+  .input-box2 {
+    height: 30px;
+    width: 70px;
+    margin: 0 5px;
+  }
+  
+  .Mob-verify {
+    display: flex;
+    justify-content: right;
+    width: 315px;
+    margin: 5px 5px;
+  }
+  
+  .auth-text {
+    font-size: 12px;
+    margin-right: 5px;
+  }
+  
+  button {
+    border-radius: 5px;
+  }
+  
+  .select {
+    height: 30px;
+    width: 300px;
+    margin: 5px 0;
+    border-radius: 5px;
+  }
+  
+  .sex {
+    margin: 10px 0;
+  }
+  
+  .submit {
+    height: 30px;
+    width: 300px;
+    background-color: white;
+  }
+</style>
+<body>
+    <h1>회원가입</h1>
+    <div class="Basic-info">
+        <input
+            type="text" name="name" id="name" class="input-box" placeholder="이름을 입력하세요."/>
+        <input
+            type="text" name="id" id="id" class="input-box" placeholder="ID를 입력하세요."/>
+        <input
+            type="text" name="pw" id="pw" class="input-box" placeholder="패스워드를 입력하세요."/>
+        <input
+            type="text" name="pw2" id="pw2" class="input-box" placeholder="패스워드를 재입력하세요."/>
+        <input
+            type="text" name="email" id="email" class="input-box" placeholder="E-mail을 입력하세요."/>
+
+        <div class="phone-info">
+            <input
+            type="text" name="p_num1" id="p_num1" class="input-box2" placeholder="000">-
+            <input
+            type="text" name="p_num2" id="p_num2" class="input-box2" placeholder="0000">-
+            <input
+            type="text" name="p_num3" id="p_num3" class="input-box2" placeholder="0000">
+        </div>
+
+        <div class="Mob-verify">
+            <label class="auth-text">000000</label>
+            <button>인증번호 전송</button>
+        </div>
+
+        <div class="Mob-verify">
+            <label class="auth-text">3:00</label>
+            <button disabled>인증 완료</button>
+        </div>
+        <select name="select" class="input-box3">
+            <option value="select">-지역을 선택하세요.-</option>
+            <option value="seoul">서울</option>
+            <option value="gyeonggi">경기</option>
+            <option value="incheon">인천</option>
+            <option value="others">비수도권</option>
+        </select>
+
+        <div class="sex">
+            <input type="radio" name="sex" id="female">
+            <label for="female">여성</label>
+            <input type="radio" name="sex" id="male">
+            <label for="male">남성</label>
+        </div>
+        <input type="submit" 
+        value="가입하기" id="sign" 
+        name="input-box4" class="submit">
+
+    </div>
+    <script>
+        document.getElementById('sign').addEventListener('click', function() {
+            let formData = {  // 'const' 키워드에서 'let'으로 수정
+                name: document.getElementById('name').value,
+                id: document.getElementById('id').value,
+                password: document.getElementById('pw').value,
+                password2: document.getElementById('pw2').value,
+                email: document.getElementById('email').value,
+                phonenumber1: document.getElementById('p_num1').value,
+                phonenumber2: document.getElementById('p_num2').value,
+                phonenumber3: document.getElementById('p_num3').value,
+                weightclass: document.querySelector('.input-box3').value,
+                gender: document.querySelector('input[name="sex"]:checked') ? document.querySelector('input[name="sex"]:checked').value : null
+            };
+    
+            console.log('가입한 유저 데이터:', formData);
+        });  
+    </script>
+</body>
+</html>
