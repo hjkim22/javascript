@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mystery Number 맞추기</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 50px;
+        }
+
+        h2 {
+            margin-bottom: 30px;
+        }
+
+        input {
+            width: 200px;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        #hint {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Mystery Number 맞추기</h1>
+    <h2>1부터 100사이의 숫자를 입력하세요!</h2>
+
+    <input type="number" id="userInput" placeholder="숫자를 입력하세요">
+    <button onclick="checkGuess()">뚜둥!</button>
+
+    <div id="hint"></div>
+
+    <script>
+        const secretNumber = Math.floor(Math.random() * 100) + 1;
+        let attemptCount = 0;
+
+        function checkGuess() {
+            const userInput = document.getElementById("userInput").value;
+            const hintElement = document.getElementById("hint");
+
+            if (userInput === "") {
+                hintElement.textContent = "숫자를 입력하세요!";
+                hintElement.style.color = "white";
+                return;
+            }
+
+            const userGuess = parseInt(userInput);
+
+            if (isNaN(userGuess) || userGuess < 1 || userGuess > 100) {
+                hintElement.textContent = "1부터 100사이의 숫자를 입력하세요!";
+                hintElement.style.color = "white";
+                return;
+            }
+
+            attemptCount++;
+
+            if (userGuess === secretNumber) {
+                hintElement.textContent = `축하합니다! ${attemptCount}번 만에 숫자를 맞추셨습니다!`;
+                hintElement.style.color = "green";
+            } else if (userGuess < secretNumber) {
+                hintElement.textContent = "Up!";
+                hintElement.style.color = "yellow";
+            } else {
+                hintElement.textContent = "Down!";
+                hintElement.style.color = "yellow";
+            }
+        }
+    </script>
+</body>
+</html>

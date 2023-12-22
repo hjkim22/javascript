@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>점수 / 학점 구하기</title>
+</head>
+<body>
+    <div id="container"></div>
+
+    <script>
+        const container = document.getElementById("container");
+        
+        const h1 = document.createElement("h1");
+        h1.textContent = "다음 조건에 맞게 코드를 작성해주세요.";
+        container.appendChild(h1);
+
+        const h2 = document.createElement("h2");
+        h2.innerHTML = "조건:<br>1. 입력창을 띄워 사용자의 0 ~ 100점의 숫자를 받는다.<br>2. 입력받은 점수에 맞는 성적의 등급을 나눈다.<br>3. 나의 기말고사 점수는 <span id='score'></span>점, 학점은 <span id='grade'></span>입니다.";
+        container.appendChild(h2);
+
+        const userScore = prompt("0 ~ 100 사이로 점수를 입력하세요.");
+        const scoreElement = document.getElementById("score");
+
+        if (userScore !== null && !isNaN(userScore)) {
+            scoreElement.textContent = userScore + " ";
+            
+            let grade = "";
+            if (userScore > 100) {
+                alert("유효하지 않은 입력: 0에서 100 사이의 점수를 입력하세요.");
+            } else if (userScore >= 90) {
+                grade = "A";
+            } else if (userScore >= 80) {
+                grade = "B";
+            } else if (userScore >= 70) {
+                grade = "C";
+            } else if (userScore >= 60) {
+                grade = "D";
+            } else if (userScore > 100) {
+                alert("유효하지 않은 입력: 0에서 100 사이의 점수를 입력하세요.");
+            } else {
+                grade = "F";
+            }
+            const gradeElement = document.getElementById("grade");
+            gradeElement.textContent = grade;
+        } else {
+            alert("유효하지 않은 입력: 숫자를 입력하세요.");
+        }
+    </script>
+</body>
+</html>

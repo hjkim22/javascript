@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>별 트리 만들기</title>
+</head>
+<style>
+    .diamond{
+        text-align: center;
+        width: 50px;
+    }
+    
+</style>
+<body>
+    
+    <div id="container"></div>
+    
+    <script>
+        const container = document.getElementById("container");
+        
+        const h1 = document.createElement("h1");
+        h1.textContent = "별 트리 찍기";
+        container.appendChild(h1);
+
+        const h3 = document.createElement("h3");
+        h3.textContent = "1번 별";
+        container.appendChild(h3);
+
+        for (let star_1 = 1; star_1 <= 5; star_1++) {
+            const p = document.createElement("p");
+            p.textContent = "*".repeat(star_1);
+            container.appendChild(p);
+        }
+
+        const h4 = document.createElement("h3");
+        h4.textContent = "2번 별";
+        container.appendChild(h4);
+
+        for (let star_2 = 1; star_2 <= 5; star_2++) {
+            const p = document.createElement("p");
+            p.textContent = "*".repeat(star_2);
+            container.appendChild(p);
+        }
+        
+        for (let star_2 = 5; star_2 >= 1; star_2--) {
+            const p = document.createElement("p");
+            p.textContent = "*".repeat(star_2);
+            container.appendChild(p);
+        }
+
+        const h5 = document.createElement("h3");
+        h5.textContent = "3번 별";
+        container.appendChild(h5);
+
+        const n = 5; // 다이아몬드의 높이
+
+        // 다이아몬드 상단 부분 출력
+        for (let i = 1; i <= n; i++) {
+            const p = document.createElement("p");
+            p.textContent = " ".repeat(n - i) + "*".repeat(2 * i - 1);
+            p.classList.add("diamond");
+            container.appendChild(p);
+        }
+
+        // 다이아몬드 하단 부분 출력
+        for (let i = n - 1; i >= 1; i--) {
+            const p = document.createElement("p");
+            p.textContent = " ".repeat(n - i) + "*".repeat(2 * i - 1);
+            p.classList.add("diamond");
+            container.appendChild(p);
+        }
+    </script>
+</body>
+</html>
