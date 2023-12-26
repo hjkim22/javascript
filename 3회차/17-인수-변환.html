@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" 
+    content="width=device-width, initial-scale=1.0">
+    <title>인수 & 변환</title>
+</head>
+<body>
+
+    <div id="container"></div>
+
+    <script>
+
+        console.log(("첫번째 문단", "red"))
+        console.log(createParagrph("두번째 문단", "blue"))
+        console.log(createParagrph("세번째 문단", "orange"))
+
+        function createParagrph( content, color ){
+            const p = document.createElement("p")
+            p.style.color = color
+            p.textContent = content
+            document.querySelector("#container").append(p)
+        
+            return `방금 만든 태그의 콘텐츠 : ${content}, 색상 : ${color}`
+        }
+
+        // function sample(){
+        //     console.log("반환 기능 테스트")
+        //     return "짜잔"
+        // }
+        // console.log(sample())
+    </script>
+    
+</body>
+</html>
