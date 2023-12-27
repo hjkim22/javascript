@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" 
+    content="width=device-width, initial-scale=1.0">
+    <title>가위바위보 게임</title>
+</head>
+<style>
+    body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+    }
+
+    h1 {
+            text-align: center;
+    }
+
+    input {
+            width: 200px;
+            padding: 10px;
+            margin: 10px;
+    }
+
+    button {
+            padding: 10px;
+            margin: 10px;
+            cursor: pointer;
+    }
+
+    p {
+            text-align: center;
+    }
+</style>
+<body>
+    <div>
+        <h1>가위바위보 게임</h1>
+        <p>가위, 바위, 보 중 하나를 입력하세요👇</p>
+        <input type="text" id="userChoice" placeholder="가위, 바위, 보">
+        <button onclick="playGame()">결과 확인</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function playGame() {
+            const choices = ["가위", "바위", "보"];
+            const userChoice = document.getElementById("userChoice").value;
+            const computerChoice = choices[Math.floor(Math.random() * choices.length)];
+            const resultElement = document.getElementById("result");
+
+            if (choices.includes(userChoice)) {
+                resultElement.textContent = `당신의 선택: ${userChoice} / 컴퓨터의 선택: ${computerChoice} / 결과: ${getResult(userChoice, computerChoice)}`;
+            } else {
+                resultElement.textContent = "가위, 바위, 보 중 하나를 입력하세요.";
+            }
+        }
+
+        function getResult(user, computer) {
+            if (user === computer) {
+                return "비겼다";
+            } else if (
+                (user === "가위" && computer === "보") ||
+                (user === "바위" && computer === "가위") ||
+                (user === "보" && computer === "바위")
+            ) {
+                return "이겼다";
+            } else {
+                return "졌다";
+            }
+        }
+    </script>
+</body>
+</html>
