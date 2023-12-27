@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" 
+    content="width=device-width, initial-scale=1.0">
+    <title>클래스 리스트</title>
+    <style>
+        .img{
+            width: 300px;
+            height: 450px;
+        }
+        .good{
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <img class="img" src="/javascript/4회차/images/박재훈.png" alt="박재훈">
+    <br>
+    <button id="add">ADD STYLE</button>
+    <button id="remove">REMOVE STYLE</button>
+    <button id="toggle">TOGGLE STYLE</button>
+
+    <script>
+        const img = document.querySelector("img")
+        const addBtn = document.querySelector("#add")
+        const removeBtn = document.querySelector("#remove")
+        const toggleBtn = document.querySelector("#toggle")
+
+        console.log(img.classList)
+
+        addBtn.addEventListener("click", function(){
+            img.classList.add("good")
+            console.log(img.classList.contains("good"))
+            
+        })
+        removeBtn.addEventListener("click", function(){
+            img.classList.remove("good")
+            console.log(img.classList.contains("good"))
+
+        })
+        toggleBtn.addEventListener("click", function(){
+            img.classList.toggle("good")
+            console.log(img.classList.contains("good"))
+
+        })
+    </script>
+</body>
+</html>
