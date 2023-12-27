@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" 
+    content="width=device-width, initial-scale=1.0">
+    <title>이미지 멈추기</title>
+    <style>
+        body {
+            margin: 0;
+            height: 400px;
+            width: 600px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            background-size: contain; 
+            background-position: left top;
+            background-repeat: no-repeat;
+        }
+
+        button {
+            font-size: 1.5em;
+            padding: 10px;
+            cursor: pointer;
+            margin-left: 10px;
+            margin-top: 420px;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="toggleImage()">멈춰!</button>
+
+    <script>
+        let intervalId;
+        let isPlaying = true;
+        let currentIndex = 0;
+
+        function toggleImage() {
+            if (isPlaying) {
+                clearInterval(intervalId);
+            } else {
+                intervalId = setInterval(changeImage, 2000);
+            }
+
+            isPlaying = !isPlaying;
+        }
+
+        function changeImage() {
+            const images = [
+                'url("images/정준하1.png")',
+                'url("images/정준하2.png")',
+                'url("images/정준하3.png")'
+            ];
+
+            currentIndex = (currentIndex + 1) % images.length;
+            document.body.style.backgroundImage = images[currentIndex];
+        }
+
+        intervalId = setInterval(changeImage, 2000);
+    </script>
+</body>
+</html>
