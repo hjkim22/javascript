@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>성적표</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 20px;
+    }
+
+    h1 {
+        color: #333;
+    }
+
+    table {
+        width: 20%;
+        margin: 20px auto;
+        border-collapse: collapse;
+    }
+
+    th,
+    td {
+        padding: 10px;
+        border: 1px solid black
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    p {
+        font-weight: bold;
+        color: #333;
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    li {
+        margin: 5px 0;
+    }
+</style>
+
+<body>
+
+    <h1>떡잎 유치원 멀리뛰기 결과</h1>
+
+    <table>
+        <tr>
+            <th>이름</th>
+            <th>점수</th>
+        </tr>
+        <tr>
+            <td>짱구</td>
+            <td id="score1"></td>
+        </tr>
+        <tr>
+            <td>철수</td>
+            <td id="score2"></td>
+        </tr>
+        <tr>
+            <td>훈이</td>
+            <td id="score3"></td>
+        </tr>
+        <tr>
+            <td>맹구</td>
+            <td id="score4"></td>
+        </tr>
+        <tr>
+            <td>유리</td>
+            <td id="score5"></td>
+        </tr>
+        <tr>
+            <td>수지</td>
+            <td id="score6"></td>
+        </tr>
+    </table>
+
+    <p>75점이 넘는 사람 👇</p>
+    <ul id="highScores"></ul>
+
+    <script>
+        function getRandomScore() {
+            return Math.floor(Math.random() * 100) + 1;
+        }
+
+        function generateStudentInfo() {
+            for (let i = 1; i <= 6; i++) {
+                const score = getRandomScore();
+                document.getElementById(`score${i}`).textContent = score;
+
+                if (score > 75) {
+                    const names = ['짱구', '철수', '훈이', '맹구', '유리', '수지'];
+                    highScoreStudents.push(names[i - 1]);
+                    scores[names[i - 1]] = score;
+                }
+            }
+        }
+
+        function displayHighScores() {
+            const sortedHighScores = highScoreStudents.sort((a, b) => scores[b] - scores[a]);
+
+            const highScoresList = document.getElementById("highScores");
+            sortedHighScores.forEach(student => {
+                const listItem = document.createElement("li");
+                listItem.textContent = `${student} (${scores[student]}점)`;
+                highScoresList.appendChild(listItem);
+            });
+        }
+
+        const scores = {};
+        const highScoreStudents = [];
+
+        generateStudentInfo();
+        displayHighScores();
+    </script>
+</body>
+</html>
